@@ -32,10 +32,6 @@ async def attack(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     global user_processes
     user_id = str(update.message.from_user.id)
 
-    if user_id not in users:
-        await update.message.reply_text("\u274c Unauthorized access. Please contact the admin.")
-        return
-
     if len(context.args) != 4:
         await update.message.reply_text('Usage: /attack <target_ip> <port> <duration> <sid>')
         return
